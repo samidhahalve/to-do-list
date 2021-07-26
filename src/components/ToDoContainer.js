@@ -13,7 +13,6 @@ const useStyles = makeStyles(()=>({
 
 export default function ToDoContainer() {
     const classes = useStyles();
-
     const { todos }  = useSelector((state)=>{
         return {
             todos: state.todos,
@@ -36,7 +35,7 @@ export default function ToDoContainer() {
         <Box className={classes.root}>
             <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <Typography align="left" variant="h5" gutterBottom>Pending Todos</Typography>
+                    <Typography align="left" variant="h6" gutterBottom>New Todos</Typography>
                     <Divider/>
                     <List>
                         {prioritizeTodo.map((todo) => {
@@ -49,7 +48,7 @@ export default function ToDoContainer() {
                     </List>
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography align="left" variant="h5" gutterBottom>Completed Todos</Typography>
+                    <Typography align="left" variant="h6" gutterBottom>Completed Todos</Typography>
                     <Divider/>
                     <List>
                         {prioritizeTodo.map((todo) => {

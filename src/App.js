@@ -1,9 +1,25 @@
 import "./App.css";
-import taskList from "./images/task-list.png";
+import {useSelector} from 'react-redux';
+import taskList from "./images/task-list.png"
 import ToDoAdder from "./components/ToDoAdder";
 import ToDoContainer from "./components/ToDoContainer";
+import ToDoReminder from "./components/ToDoReminder";
+import ToDoMood from "./components/ToDoMood";
 
 function App() {
+
+  const {mood} = useSelector((state)=>{
+    return {
+        mood: state.mood
+    }
+});
+
+const {notes} = useSelector((state)=>{
+  return {
+      notes: state.notes
+  }
+});
+
   return <div className="App">
 
     <div className="app-header">
@@ -14,6 +30,13 @@ function App() {
     <div className="app-container">
         <ToDoAdder></ToDoAdder>
         <ToDoContainer></ToDoContainer>
+        <div style={{
+          display:'flex',
+        }}>
+          <ToDoReminder propNotes = {notes}></ToDoReminder>
+          <ToDoMood {...mood}></ToDoMood>
+        </div>
+        
     </div>
   </div>;
 }

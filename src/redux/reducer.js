@@ -1,5 +1,5 @@
 import initialState from "./initial-state";
-import { ADD_TODO, TOGGLE_COMPLETED, DELETE_TODO, TOGGLE_IMPORTANT } from "./action";
+import { ADD_TODO, TOGGLE_COMPLETED, DELETE_TODO, TOGGLE_IMPORTANT , ADD_NOTES, DELETE_NOTES, TOGGLE_MOOD} from "./action";
 import shortid from "shortid";
 
 function saveStatePersistant(state){
@@ -63,6 +63,42 @@ function reducer(state = initialState, action){
             const newState = {
                 ...state,
                 todos:newToDos,
+            };
+            saveStatePersistant(newState);
+            return newState;
+        }
+
+        case ADD_NOTES:{
+            const newNotes = action.payload.notes;
+
+        const newState = {
+            ...state,
+            notes: newNotes
+        };
+        saveStatePersistant(newState);
+        return newState;
+        }
+
+        case DELETE_NOTES:{
+
+            const newState = {
+                ...state,
+                notes:'',
+            }
+            saveStatePersistant(newState);
+            return newState;
+        }
+
+        case TOGGLE_MOOD:{
+            const newMood = state.mood.map((mood)=>{
+                if(mood.moodID === action.payload.selectedMood){
+                    mood.moodStatus = !mood.moodStatus;
+                }
+                return mood;
+            });
+            const newState = {
+                ...state,
+                mood:newMood,
             };
             saveStatePersistant(newState);
             return newState;

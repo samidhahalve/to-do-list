@@ -8,7 +8,6 @@ import { TOGGLE_COMPLETED, DELETE_TODO, TOGGLE_IMPORTANT } from "../redux/action
 
 export default function ToDoItem({id, title, completed, important}) {
     const dispatch = useDispatch();
-
     function toggleCheckBox(){
         dispatch({
             type:TOGGLE_COMPLETED,

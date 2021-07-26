@@ -1,9 +1,18 @@
 import React, { useState, useRef} from "react";
 import { useDispatch } from  "react-redux";
-import { Box, Button, TextField } from "@material-ui/core/";
+import { Box, Button, TextField, Paper, Typography } from "@material-ui/core/";
 import { ADD_TODO } from '../redux/action';
 
 export default function ToDoAdder() {
+
+  const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        };
+   const today = new Date().toLocaleDateString(undefined, options);
+
   const [title, setTitle] = useState(null);
 
   const itemRef = useRef(null);
@@ -29,10 +38,13 @@ export default function ToDoAdder() {
 
   return (
     <div>
-      <Box>
+        <Paper elevation={0}><Typography variant="h5">{today}</Typography></Paper>
+      <Box style={{
+          marginTop:20
+      }}>
         <TextField
           style={{
-              width:400,
+              width:400,              
               fontFamily:"Noto Serif JP"
           }}
           label="Add new todo"
