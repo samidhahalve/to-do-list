@@ -41,7 +41,7 @@ const initialState = JSON.parse(window.localStorage.getItem("todo-State"))||{
         },
         {
             moodID:'fine',
-            moodStatus:true
+            moodStatus:false
         },
         {
             moodID:'angry',
