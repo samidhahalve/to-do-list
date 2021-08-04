@@ -80,7 +80,7 @@ export default function ToDoMood(mood) {
         <Box xs={6} className={classes.root}>
             <Typography align="left" variant="h6" gutterBottom>Today's Mood</Typography>
             <Divider></Divider>
-            <IconList moodList={mood}></IconList>
+            <IconList></IconList>
             
         </Box>
     )
